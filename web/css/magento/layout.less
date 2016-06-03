@@ -1,0 +1,141 @@
+// *****************************************************
+//  * @package Venus Theme Framework for Magento 2.x
+//  * @version 1.0
+//  * @author http://www.venustheme.com
+//  * @copyright Copyright (C) Augus 2015 VenusThemes.com <@email:venusthemes@gmail.com>.All rights reserved.
+//  * @license   GNU General Public License version 1
+// ******************************************************
+body{
+    &.layout-boxed-md{
+        #page{  
+            max-width: @layout__max-width;  
+        }  
+    }
+    &.layout-boxed-lg{
+        #page{  
+            max-width: @layout__max-width;   
+        }
+    }
+    &.fullwidth{ 
+    }  
+}
+.breadcrumbs .items {
+    color: #000;
+    a {
+        color: #000!important;
+    }
+}
+
+.cms-home h1.page-title { display: none !important;}
+
+// Slideshow
+.ves-slideshow {}
+// Banner Top
+.ves-bannertop {} 
+// Showcase
+.ves_showcase {}
+
+.ves-masstop {}
+
+// Brand module
+.ves-massbottom {
+    .block {
+        margin-bottom: 0;
+        .block-title {
+            strong {color: @white;}
+        }
+        .block-content{ 
+            color: @white;
+            padding:30px 0;
+
+        }
+    }
+}
+.call-online{
+    float: left;
+    color: #696969;
+    font-size: 12px;
+}
+.ves-massbottom2 {}
+.page-footer { background: #f5f5f5;}
+.footer-top {
+    ul {
+        border-bottom: 1px solid #ddd;
+        padding: 40px 0;
+        text-align: center;
+        li {
+            display: inline-block;
+            list-style: none;
+            padding:0 25px;
+            text-transform: uppercase;
+            a {
+                font-size: 11px;
+                font-weight: 700;
+                color: #000;
+                letter-spacing: 2px;
+                font-family: 'Open Sans', sans-serif;
+                &:hover {
+                    text-decoration: none;
+                    color: #0f245c;
+                }
+            }
+        }
+    }
+}
+
+.footer-center {
+    padding-top:40px;
+    padding-bottom:40px;
+    .footer-info {
+        span {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #000;
+            font-weight: 700;
+        }
+        span.title {
+            color: #0f245c;
+        }
+        p {
+            color: #000;
+        }
+    }
+    .list-social {
+        li {
+            display: inline-block;
+            list-style: none;
+            padding:0 15px;
+            a { 
+                color: #000;
+                &:hover, &:focus {
+                    color: #0f245c;
+                }
+            }
+        }
+    }
+}
+
+.copyright {
+    background: #999;
+    min-height: 50px;
+    line-height: 50px;
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-family: "georgia",sans-serif;
+    a {
+        color: @white;
+    }
+}
+
+.page-main > .page-title-wrapper {
+    padding: 0 20px;
+    background: #f1f1f1;
+    margin: 0 0 20px;
+}
+
+.pages strong.page { padding: 0 15px !important}
+.pages .item {
+    font-size: 15px!important;
+}
