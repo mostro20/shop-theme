@@ -6,41 +6,21 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-
-        <move element="header.panel" destination="header.wrapper"/>
-        <move element="logo" destination="header.wrapper" before="-" />
-        <move element="top.links" destination="header.wrapper" after="logo" />
-        <move element="catalog.topnav" destination="header.wrapper" after="top.links" />
-
-        <referenceContainer name="header-wrapper" label="Page Header" as="header-wrapper" htmlTag="div" htmlClass="header-content"/>
-
-        <container name="header-wrapper" label="Page Header" as="header-wrapper" htmlTag="div" htmlClass="header content">
-            <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
-                <arguments>
-                    <argument name="logo_file" xsi:type="string">images/logo.png</argument>
-                    <argument name="logo_img_width" xsi:type="number">100</argument>
-                    <argument name="logo_img_height" xsi:type="number">40</argument>
-                </arguments>
-            </block>
-            <block class="Magento\Framework\View\Element\Html\Links" name="top.links">
-                <arguments>
-                    <argument name="css_class" xsi:type="string">header links</argument>
-                </arguments>
-            </block>
-        </container>
-
-
         <referenceBlock name="store.settings.language" remove="true"/>
 
-        <!--<referenceBlock name="logo">
+        <referenceContainer name="header.panel.wrapper">
+            <block class="Magento\Theme\Block\Html\Header" name="navigations.section" template="html/rwahsnav.phtml" before="header.panel"/>
+        </referenceContainer>
+
+        <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/logo.png</argument>
-                <argument name="logo_img_width" xsi:type="number">100</argument>
-                <argument name="logo_img_height" xsi:type="number">40</argument>
+                <argument name="logo_img_width" xsi:type="number">220</argument>
+                <argument name="logo_img_height" xsi:type="number">60</argument>
             </arguments>
-        </referenceBlock>-->
+        </referenceBlock>
 
         <referenceContainer name="footer-container">
             <container name="footer-top" label="Footer Top" htmlTag="div" htmlClass="footer-top page-main">
