@@ -1,0 +1,118 @@
+// *****************************************************
+//  * @package Venus Theme Framework for Magento 2.x
+//  * @version 1.0
+//  * @author http://www.venustheme.com
+//  * @copyright Copyright (C) Augus 2015 VenusThemes.com <@email:venusthemes@gmail.com>.All rights reserved.
+//  * @license   GNU General Public License version 1
+// ******************************************************
+
+// Tablet landscape
+@media (max-width: @screen-md-max) {  
+	.block {
+		&-static{
+			.static-content {
+				right:10%;
+			}
+		}
+		&-static2{
+			.static-content {
+				left:10%;
+			}
+		}
+		&-static3{
+			.static-content {
+				left:5%;
+				right:5%;
+			}
+		}
+		&-static4{
+			.static-content {
+				right:10%;
+			}
+		}
+		
+	} 
+	.product-block .product-item-actions .actions-primary .add-to-cart { padding:10px 15px;}
+}
+
+// Tablet portrait
+@media (max-width: @screen-sm-max) {
+	.block {
+		&-static{
+			.static-content {
+				right:5%;
+				top:20%;
+				max-width: 250px;
+			}
+		}
+		&-static2{
+			.static-content {
+				left:5%;
+				top:15%;
+			}
+		}
+		&-static3{
+			.static-content {
+				left:5%;
+				right:5%;
+				.static-link {
+					float:none;
+					margin-top:20px;
+				}
+			}
+		}
+		&-static4{
+			.static-content {
+				right:5%;
+				top:5%;
+			}
+		}
+	} 
+}
+
+// Mobile responsive
+@media (max-width: @screen-xs-max) {  
+	.padding-left-0 { padding-left: @grid-gutter-width/2 !important}
+	.padding-right-0 { padding-right: @grid-gutter-width/2 !important}
+
+	.block {
+		&-static,
+		&-static2,
+		&-static3,
+		&-static4{
+			.static-content {
+				.static-title {
+					font-size: 18px;
+					padding-bottom: 10px;
+				}
+				.static-desc { display:none;}
+				.static-link { padding-top:20px;}
+			}
+			.img-content{
+				img { width: 100%; height: auto;}
+			}
+		}
+	}
+	
+	.product-item-actions {
+		display: block;
+	} 
+
+	// Menu offcanvas 
+	.sections {
+		&.nav-sections {
+			.navigation {
+				padding:0 !important;
+				ul {
+					background: transparent;
+
+				}
+				.level0 > .level-top {
+					padding: 8px 15px!important;
+					color: #000 !important;
+				}
+			}
+		}
+
+	}
+}
