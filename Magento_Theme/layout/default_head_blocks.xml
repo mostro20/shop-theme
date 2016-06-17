@@ -6,30 +6,30 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/> 
         <!-- Add local resources -->
         <css src="css/bootstrap-tiny.css"/>
         <css src="css/stylesheet.css"/>
         <css src="css/font-awesome.min.css"/>
-
+        
         <css src="css/styles-m.css" />
         <css src="css/styles-l.css" media="screen and (min-width: 768px)"/>
         <css src="css/print.css" media="print" />
 
         <!-- Add external resources -->
         <link src="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic" src_type="url"/>
-        <!-- <css src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" src_type="url" />
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" src_type="url" /> -->
-
+        <link src="https://fonts.googleapis.com/css?family=Raleway" src_type="url"/>
+        <css src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" src_type="url" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" src_type="url" />
         <!-- The following two ways to add local JavaScript files are equal -->
         <!-- <link src="js/sample.js"/> -->
 
         <!-- Remove local resources -->
         <!-- <remove src="my-js.js"/>-->
-
-        <!-- Remove external resources -->
+								
+		<!-- Remove external resources -->
         <!-- <remove src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/> -->
     </head>
 </page>

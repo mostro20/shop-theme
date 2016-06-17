@@ -1,5 +1,5 @@
 // /**
-//  * Copyright © 2016 Magento. All rights reserved.
+//  * Copyright © 2015 Magento. All rights reserved.
 //  * See COPYING.txt for license details.
 //  */
 
@@ -18,10 +18,98 @@
 // Colour overrides
 @color-gray-middle3: #0f245c;
 @color-gray56: #FF4519;
-@minicart-icons-color: #0f245c;
-@color-blue1: #0f245c;
 
+// Override "Yume" Green with "RWAHS" blue:
+@color-blue1: #0f245c;
+@minicart-icons-color: #0f245c;
 @panel__background-color: #0f245c;
+
+//  Color nesting
+@panel__background-color: @color-gray-light0;
+@border-color__base: @color-gray80;
+
+//  Headings
+@h3__font-weight: @font-weight__semibold;
+@h3__margin-top: @indent__base;
+
+// manual overrides for custom stlying of RWAHS theme
+// ---------------------------------------------
+// background colour for heading panel area
+.header{
+  background-color: @color-gray-middle3;
+}
+.header .logo{
+  margin-top:-25px;
+}
+// Account, Login and Shopping Specific Links - currently in YUME are on White BG so need to be overridden:
+.header .links a,
+.header .links a:visited{
+  color:white;
+}
+.header .links a:hover{
+  color:white;
+}
+.minicart-wrapper a.action{
+  color:white;
+}
+.minicart-wrapper .cart-title{
+  color:white
+}
+
+// customisation of the menu tabs between Shop, Collections and Web.
+// Note due to "Magento Bootstrap" have had to manually style a lot of Bootstrap styles in this area
+
+// Hide from mobile display
+@media screen and (max-width: 768px){
+  .rwahsglobalnav {
+    display: none;
+  }
+}
+// Now style of other displays
+.rwahsglobalnav ul{
+  margin-top:15px;
+  margin-bottom:0;
+  padding-bottom:9px;
+}
+.rwahsglobalnav ul li{
+  display: inline;
+}
+.rwahsglobalnav ul li a{
+  margin-right:3px;
+  color: @color-gray-middle3;
+  padding:10px 15px;
+  position: relative;
+  border: 1px solid @color-gray-middle3;
+  -webkit-border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+.rwahsglobalnav ul li.active a{
+  background: @color-gray-middle3;
+  color: white;
+  border: 1px solid @color-gray-middle3;
+  border-bottom-color: transparent;
+}
+
+// home page footer panel
+.footer-top{
+  border-top: 1px solid @color-gray-middle3;
+}
+
+
+//  Widths
+@layout__width: ''; // for the fixed width layout
+@layout__max-width: 1200px;
+@layout-indent__width: 15px;
+@layout__width-xs-indent: 15px;
+//
+//  Layout grid
+//  ---------------------------------------------
+@total-columns:12;
+//  Variables for layout columns
+@layout-column__sidebar-width:3;
+//  Checkout columns width
+@layout-column-checkout__width-left:9;
 
 //  Fonts
 @icons__font-path: '@{baseDir}fonts/Luma-Icons';
@@ -44,22 +132,10 @@
 @table-responsive-th__background-color: @table-cell-stripped__background-color;
 @table-responsive-cell__padding: @indent__xs @indent__s;
 
-//
-//  Layout grid
-//  ---------------------------------------------
-
-@total-columns: 24;
-
-//  Variables for layout columns
-@layout-column__sidebar-width: 5;
-
-//  Checkout columns width
-@layout-column-checkout__width-left: 6;
 
 //
 //  Navigation
 //  ---------------------------------------------
-
 @navigation__background: @color-gray94;
 @navigation-level0-item__active__color: @primary__color;
 @submenu-item__active__color: @navigation-level0-item__active__color;
@@ -126,9 +202,26 @@
 //  Button with icon
 @button-icon__line-height: @icon-font__line-height;
 
+@minicart-icons-color: #00b06c;
+
+@color-blue1: #00b06c;
+@color-blue2: #000;
+
+@panel__background-color: #00b06c;
+
+@tab-control__active__background-color:#000;
+@tab-control__color: @color-white;
+@tab-control__active__color: @color-white;
+
+@tab-content__background-color:@color-white;
+@tab-content__padding-right:0;
+@tab-content__padding-left:0;
+@tab-content__margin-top:40px;
+
 //
 //  Icons
 //  ---------------------------------------------
+
 
 @icon-wishlist-empty: false;
 @icon-comment-reflected: false;
@@ -207,15 +300,13 @@
 //
 //  Rating
 //  ---------------------------------------------
-
-@rating-icon__font-size: 16px;
-@rating-icon__letter-spacing: 2px;
-@rating-icon__active__color: @active__color;
+@rating-icon__font-size: 14px;
+@rating-icon__letter-spacing: 1px;
+@rating-icon__active__color: #ffc960;
 
 //
 //  Dropdowns
 //  ---------------------------------------------
-
 @dropdown-toggle-icon__content: @icon-down;
 @dropdown-toggle-icon__active__content: @icon-up;
 @dropdown-toggle-icon__font-size: 12px;
@@ -231,10 +322,14 @@
 //
 //  Breadcrumbs
 //  ---------------------------------------------
-
 @breadcrumbs__container-margin: 0 0 15px;
 @breadcrumbs-icon__font-size: 10px;
 @breadcrumbs-icon__font-margin: 0 @indent__s;
+@breadcrumbs-link__color:#fff;
+@breadcrumbs-current__color:#fff;
+@breadcrumbs-link__visited__color:#fff;
+@breadcrumbs-link__hover__color:#f00;
+@breadcrumbs-link__active__color:#f00;
 
 //
 //  Popups
@@ -257,6 +352,9 @@
 
 @gallery-thumb-border-color-active: @active__color;
 
+//  Modal popup
+@modal-action-close__font-size: @font-size__base;
+
 //  Checkout tooltip icon
 @checkout-tooltip-icon__font-size: 21px;
 
@@ -273,3 +371,4 @@
 
 // Checkout
 @checkout-sidebar__columns: 8;
+
