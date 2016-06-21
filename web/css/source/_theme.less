@@ -35,7 +35,7 @@
 // manual overrides for custom stlying of RWAHS theme
 // ---------------------------------------------
 // background colour for heading panel area
-.header{
+.page-header{
   background-color: @color-gray-middle3;
 }
 .header .logo{
@@ -49,6 +49,10 @@
 .header .links a:hover{
   color:white;
 }
+.header.panel > .header.links > li a {
+  color:white;
+}
+
 .minicart-wrapper a.action{
   color:white;
 }
@@ -66,6 +70,13 @@
   }
 }
 // Now style of other displays
+
+/*and now the container which as the cross-links*/
+.rwahsglobalnav{
+  background-color: #e2dfdf;
+  padding-top:5px;
+}
+
 .rwahsglobalnav ul{
   margin-top:15px;
   margin-bottom:0;
@@ -73,22 +84,31 @@
 }
 .rwahsglobalnav ul li{
   display: inline;
+  font-size:12px;
 }
 .rwahsglobalnav ul li a{
-  margin-right:3px;
-  color: @color-gray-middle3;
+  color:#666;
+  border-right:1px solid #ddd;
+  margin-right:-1px;
+  margin-bottom:-1px;
   padding:10px 15px;
   position: relative;
-  border: 1px solid @color-gray-middle3;
+  background-color: #e2dfdf;;
+  text-decoration:none;
   -webkit-border-radius: 6px 6px 0 0;
   -moz-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
 }
 .rwahsglobalnav ul li.active a{
-  background: @color-gray-middle3;
-  color: white;
-  border: 1px solid @color-gray-middle3;
-  border-bottom-color: transparent;
+  border-bottom:3px solid #0f245c;
+  background-color: white;
+}
+.rwahsglobalnav ul li .active{
+  background-color: white;
+}
+.rwahsglobalnav ul li a:hover{
+  color:#333;
+  background-color:#f4f4f4;
 }
 
 // home page footer panel
@@ -143,7 +163,7 @@
 //  Desktop navigation
 @navigation-desktop-level0-item__line-height: 47px;
 @submenu-desktop__font-weight: @font-weight__regular;
-@submenu-desktop-item__active__color: @navigation-level0-item__active__color;
+@submenu-desktop-item__active__color: @color-gray-middle3;
 
 //  Tabs
 @tab-control__font-weight: @font-weight__regular;
@@ -202,12 +222,12 @@
 //  Button with icon
 @button-icon__line-height: @icon-font__line-height;
 
-@minicart-icons-color: #00b06c;
+@minicart-icons-color: #fff;
 
-@color-blue1: #00b06c;
-@color-blue2: #000;
+@color-blue1: #0f245c;
+@color-blue2: #0f245c;
 
-@panel__background-color: #00b06c;
+@panel__background-color: #0f245c;
 
 @tab-control__active__background-color:#000;
 @tab-control__color: @color-white;
