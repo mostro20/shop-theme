@@ -1,0 +1,581 @@
+// /**
+//  * Copyright © 2015 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Luma theme overrides
+//  _____________________________________________
+
+//  Theme file should contain declarations (overrides) ONLY OF EXISTING variables
+//  Otherwise this theme won't be available for parent nesting
+//  All new variables should be placed in local theme lib or local theme files
+
+//
+//  Typography
+//  ---------------------------------------------
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+// Colour overrides
+@color-gray-middle3: #0f245c;
+@color-gray56: #FF4519;
+
+// Override "Yume" Green with "RWAHS" blue:
+@color-blue1: #0f245c;
+@minicart-icons-color: #0f245c;
+@panel__background-color: #0f245c;
+@secondary-nav: #eb6864;
+
+// New colours for managing the cross-site tabs
+@rwahs-header-grey1: #e2dfdf;
+@rwahs-header-grey2: #666666;
+@rwahs-header-grey3: #dddddd;
+@rwahs-header-grey4: #333333;
+@rwahs-header-grey5: #f4f4f4;
+
+//  Color nesting
+@panel__background-color: @color-gray-light0;
+@border-color__base: @color-gray80;
+
+//  Headings
+@h3__font-weight: @font-weight__semibold;
+@h3__margin-top: @indent__base;
+
+// manual overrides for custom stlying of RWAHS theme
+// ---------------------------------------------
+// Start with bringing in Raleway to match website
+
+p,li,dt,dd,td,th,details,button,form,a,div,details {
+  font-family: Raleway, Georgia, serif;
+}
+
+// background colour for heading panel area
+.page-header{
+  background-color: @color-gray-middle3;
+}
+//Yume is built around a very small logo, the following three lines support larger logos//
+.page-header .header .logo {
+  margin-top: -25px;
+}
+@media screen and (min-device-width: 481px) and (max-width: 767px) {
+  .page-header .header .logo {
+    margin-left:25%;
+    margin-top:5px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-header .header .logo {
+    margin-left:15%;
+    margin-top:5px;
+  }
+}
+// Account, Login and Shopping Specific Links - currently in YUME are on White BG so need to be overridden:
+
+// Whenever I try to refactor the following into a single piece of LESS I crash the theme.
+.header.panel > .header.links > li a {
+  color:white;
+}
+.header.panel > .header.links > li a:hover {
+  color:white;
+  border-bottom: 1px dotted solid;
+}
+
+.minicart-wrapper
+  a.action {
+    color:white;
+  .cart-title {
+    color:white
+  }
+}
+
+.page-header {
+  .panel.header {
+    ul.header {
+      float: right;
+      font-size: 0;
+      border-bottom: none;
+      padding-bottom: 10px !important;
+      margin: 0;
+      padding: 0;
+      width: auto;
+      list-style: none none;
+      margin-left: auto;
+    }
+  }
+}
+// customisation of the menu tabs between Shop, Collections and Web.
+// Note due to "Magento Bootstrap" have had to manually style a lot of Bootstrap styles in this area
+
+// Hide from mobile display
+@media screen and (max-width: 768px){
+  .rwahsglobalnav {
+    display: none;
+  }
+}
+// Now style of other displays
+
+/*and now the container which as the cross-links*/
+.rwahsglobalnav{
+  background-color: @rwahs-header-grey1;
+  padding-top:5px;
+  ul {
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-bottom: 9px;
+    li {
+      display: inline;
+      font-size: 12px;
+      a {
+        color: @rwahs-header-grey2;
+        border-right: 1px solid @rwahs-header-grey3;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        padding: 10px 15px;
+        position: relative;
+        background-color: @rwahs-header-grey1;
+        text-decoration: none;
+        -webkit-border-radius: 6px 6px 0 0;
+        -moz-border-radius: 6px 6px 0 0;
+        border-radius: 6px 6px 0 0;
+        :hover {
+          color: @rwahs-header-grey4;
+          background-color: @rwahs-header-grey5;
+        }
+      }
+      .active {
+        background-color: white;
+        a {
+          border-bottom: 3px solid @color-gray-middle3;
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+
+// home page footer panel - believe it or not the bg colour has to be declared on every level
+.page-footer{
+  background-color: white;
+  .footer-top{
+    padding-bottom: 20px;
+    background-color: white;
+    .panel{
+      background-color: white;
+      box-shadow: none;
+      .panel-heading{
+        background-image: none;
+        h3 {
+          border-bottom:1px dotted @color-gray80;
+          font-size:26px;
+        }
+      }
+      .panel-body{
+        a{
+          background-color: @color-gray-middle3;
+          border-color: @color-gray-middle3;
+          color: white;
+          text-decoration: none;
+          display: inline-block;
+          margin-bottom: 0;
+          font-weight: normal;
+          text-align: center;
+          vertical-align: middle;
+          -ms-touch-action: manipulation;
+          touch-action: manipulation;
+          cursor: pointer;
+          background-image: none;
+          border: 1px solid transparent;
+          white-space: nowrap;
+          padding: 8px 12px;
+          font-size: 15px;
+          line-height: 1.42857143;
+          border-radius: 4px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+        }
+      }
+    }
+  }
+  .footer-center{
+    border-top:1px solid @rwahs-header-grey1;
+    .content-container{
+      padding-left: 15%;
+      display: block;
+    }
+    .float-left{
+      float:left;
+    }
+    .float-right{
+      float:right;
+    }
+  }
+}
+
+
+//home page
+h1.site-intro{
+  margin:0;
+  color: @color-gray-middle3;
+}
+.static-content {
+  .static-title {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    font-size: 15px
+  }
+}
+// manual Yume override hacks
+.block-static3 .static-content .static-link{
+  float:none;
+  margin-top:25px;
+  a{
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+.block-static2 .static-content .static-link,
+.block-static4 .static-content .static-link{
+  a{
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+
+//  Widths
+@layout__width: ''; // for the fixed width layout
+@layout__max-width: 1200px;
+@layout-indent__width: 15px;
+@layout__width-xs-indent: 15px;
+//
+//  Layout grid
+//  ---------------------------------------------
+@total-columns:12;
+//  Variables for layout columns
+@layout-column__sidebar-width:3;
+//  Checkout columns width
+@layout-column-checkout__width-left:9;
+
+//  Fonts
+@icons__font-path: '@{baseDir}fonts/Luma-Icons';
+@icons__font-name: 'luma-icons';
+
+//  Color nesting
+@panel__background-color: @color-gray-light0;
+@border-color__base: @color-gray80;
+
+//  Headings
+@h3__font-weight: @font-weight__semibold;
+@h3__margin-top: @indent__base;
+
+//
+//  Tables
+//  ---------------------------------------------
+
+@table-cell__padding-vertical: 11px;
+@table-cell-stripped__background-color: @table-cell__hover__background-color;
+@table-responsive-th__background-color: @table-cell-stripped__background-color;
+@table-responsive-cell__padding: @indent__xs @indent__s;
+
+
+//
+//  Navigation
+//  ---------------------------------------------
+@navigation__background: @color-gray-middle3;
+@navigation-level0-item__active__color: white;
+@submenu-item__active__color: white;
+
+@media screen and (min-width: 768px) {
+  .nav-sections {
+    background-color: @color-gray-middle3;
+    .navigation > ul {
+      background-color: @color-gray-middle3;
+      li {
+        font-size: 14pt;
+        :hover {
+          color: white;
+        }
+        a {
+          text-transform: none;
+          display: block;
+          padding: 10px 15px;
+          :hover {
+            background-color: @secondary-nav;
+            color: white;
+          }
+        }
+        .has-active {
+          background-color: @secondary-nav;
+          a {
+            background-color: @secondary-nav;
+            border-bottom: none;
+          }
+        }
+        li {
+          font-size: 12pt;
+        }
+      }
+      .level0.active > a {
+        background-color: @secondary-nav;
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .nav-sections {
+    background-color: white;
+    .nav-sections-item-title{
+      background-color: white;
+      border:none;
+      border-bottom:3px solid @color-gray-middle3;
+    }
+  }
+}
+
+//Product overrides
+.product-block{
+  .product-item-details{
+    .product-item-name{
+      font-size: 14pt;
+      a{
+        border-bottom:1px dotted @color-gray-middle3;
+        :hover{
+          border-bottom:1px solid @color-gray-middle3;
+        }
+      }
+    }
+  }
+}
+
+//  Desktop navigation
+@navigation-desktop-level0-item__line-height: 40px;
+@submenu-desktop__font-weight: @font-weight__regular;
+@submenu-desktop-item__active__color: @color-gray-middle3;
+
+//  Tabs
+@tab-control__font-weight: @font-weight__regular;
+@tab-control__height: @indent__base*2;
+@tab-control__margin-right: -1px;
+@tab-control__padding-top: 1px;
+@tab-control__padding-right: 35px;
+
+//  Tabs content
+@tab-content__padding-top: 35px;
+@tab-content__padding-right: @tab-control__padding-right;
+
+//
+//  Accordion
+//  ---------------------------------------------
+
+@accordion-control__font-family: false;
+@accordion-control__font-size: @font-size__base;
+@accordion-control__font-style: false;
+@accordion-control__font-weight: @font-weight__semibold;
+@accordion-control__border-right: false;
+@accordion-control__border-bottom: false;
+@accordion-control__border-left: false;
+@accordion-control__background-color: false;
+@accordion-control__color: @primary__color;
+@accordion-control__hover__background-color: false;
+@accordion-control__hover__color: @accordion-control__color;
+@accordion-control__active__background-color: false;
+@accordion-control__active__color: @accordion-control__color;
+@accordion-control__margin-bottom: 0;
+@accordion-control__padding-right: @indent__s;
+@accordion-control__padding-left: @indent__s;
+@accordion-content__border: false;
+@accordion-content__margin: 0;
+@accordion-content__padding: @indent__s @indent__s @indent__l;
+
+//
+//  Buttons
+//  ---------------------------------------------
+
+@button__font-weight: @font-weight__semibold;
+
+//  Default = secondary button
+@button__background: @color-gray-darken0;
+@button__border: 1px solid @border-color__base;
+@button__hover__color: @button__color;
+@button__hover__background: darken(@button__background, 5%);
+@button__active__background: @color-gray-darken1;
+
+//  Primary button
+@button-primary__hover__color: @color-white;
+@button-primary__active__background: @link__hover__color;
+@button-primary__active__border: 1px solid @link__hover__color;
+@button-primary__active__color: @color-white;
+
+//  Button with icon
+@button-icon__line-height: @icon-font__line-height;
+
+@minicart-icons-color: #fff;
+
+@color-blue1: #0f245c;
+@color-blue2: #0f245c;
+
+@panel__background-color: #0f245c;
+
+@tab-control__active__background-color:#000;
+@tab-control__color: @color-white;
+@tab-control__active__color: @color-white;
+
+@tab-content__background-color:@color-white;
+@tab-content__padding-right:0;
+@tab-content__padding-left:0;
+@tab-content__margin-top:40px;
+
+//
+//  Icons
+//  ---------------------------------------------
+
+
+@icon-wishlist-empty: false;
+@icon-comment-reflected: false;
+@icon-compare-empty: false;
+@icon-arrow-up-thin: false;
+@icon-arrow-right-thin: false;
+@icon-arrow-left-thin: false;
+@icon-arrow-down-thin: false;
+@icon-wishlist-empty: '\e601';
+
+//
+//  Messages
+//  ---------------------------------------------
+
+@message__padding: 12px @indent__base 12px @indent__m;
+@message__line-height: false;
+@message-icon__font-size: 24px;
+@message-icon__inner-padding-left: 45px;
+@message-icon__top: 22px;
+@message-error-icon: @icon-error;
+@message-success-icon: @icon-success;
+
+//
+//  Loaders
+//  ---------------------------------------------
+
+@loader-overlay__background-color: rgba(255, 255, 255, .7);
+
+//
+//  Forms
+//  ---------------------------------------------
+
+//  Form fieldset
+@form-fieldset-legend__font-size: 18px;
+@form-fieldset-legend__font-weight: @font-weight__light;
+@form-fieldset-legend__margin: 0 0 @indent__base;
+@form-fieldset-legend__padding: 0 0 @indent__s;
+@form-fieldset-legend__width: 100%;
+
+//  Form field
+@form-field-type-revert: false;
+@form-field__additional-vertical-indent: @indent__s;
+
+//  Form field label
+@form-field-label__font-weight: @font-weight__semibold;
+@form-field-type-label-block__margin: 0 0 8px;
+
+//  Form field note icon
+@form-field-note-icon-font__content: false;
+
+//
+//  Pager
+//  ---------------------------------------------
+
+@pager__font-weight: @font-weight__regular;
+@pager__line-height: @indent__l;
+@pager-item__margin: 0 8px 0 0;
+@pager-item__padding: 0 @indent__xs;
+
+//  Pager current page
+@pager-current__background: @color-gray90;
+
+//  Pager link.action
+@pager-icon__font-margin: 0;
+@pager-icon__font-size: 16px;
+
+//  Pager link.action visited
+@pager-action__visited__color: @text__color__muted;
+
+//  Pager link.action hover
+@pager-action__hover__color: @text__color__muted;
+
+//  Pager link.action active
+@pager-action__active__color: @text__color__muted;
+
+//
+//  Rating
+//  ---------------------------------------------
+@rating-icon__font-size: 14px;
+@rating-icon__letter-spacing: 1px;
+@rating-icon__active__color: #ffc960;
+
+//
+//  Dropdowns
+//  ---------------------------------------------
+@dropdown-toggle-icon__content: @icon-down;
+@dropdown-toggle-icon__active__content: @icon-up;
+@dropdown-toggle-icon__font-size: 12px;
+
+//  Split dropdown
+@dropdown-split-actions__padding: 0 @indent__xs;
+@dropdown-split-toggle__actions__padding: false;
+
+//  Actions-toolbar
+@actions-toolbar-actions__position: left;
+@actions-toolbar-actions-primary__margin: 0 15px 0 0;
+
+//
+//  Breadcrumbs
+//  ---------------------------------------------
+@breadcrumbs__container-margin: 0 0 15px;
+@breadcrumbs-icon__font-size: 10px;
+@breadcrumbs-icon__font-margin: 0 @indent__s;
+@breadcrumbs-link__color:#fff;
+@breadcrumbs-current__color:#fff;
+@breadcrumbs-link__visited__color:#fff;
+@breadcrumbs-link__hover__color:#f00;
+@breadcrumbs-link__active__color:#f00;
+
+//
+//  Popups
+//  ---------------------------------------------
+
+@popup__border: 1px solid @color-gray68;
+@popup-title-headings__level: h2;
+
+//  Popup icons
+@popup-icon-font__size: 16px;
+@popup-icon-font__line-height: 16px;
+@popup-icon-font__color: @color-gray55;
+@popup-icon-font__color-hover: darken(@popup-icon-font__color, 10%);
+@popup-icon-font__color-active: @popup-icon-font__color-hover;
+
+//  Window overlay
+@overlay__background: @color-gray55;
+@overlay__opacity: .7;
+@overlay__opacity-old: 70;
+
+@gallery-thumb-border-color-active: @active__color;
+
+//  Modal popup
+@modal-action-close__font-size: @font-size__base;
+
+//  Checkout tooltip icon
+@checkout-tooltip-icon__font-size: 21px;
+
+// Checkout Payment Option icon
+@checkout-payment-option-title-icon__font-size: 14px;
+@checkout-payment-option-title-icon__line-height: 16px;
+@checkout-payment-option-title-icon__margin: 0 0 0 @indent__s;
+
+// Checkout Sidebar Shipping Information
+@checkout-sidebar-shipping-information-edit-icon__content: @icon-edit;
+@checkout-sidebar-shipping-information-edit-icon__font-size: 18px;
+@checkout-sidebar-shipping-information-edit-icon__line-height: 20px;
+@checkout-sidebar-shipping-information-edit-icon__top: @indent__s;
+
+// Checkout
+@checkout-sidebar__columns: 8;
+

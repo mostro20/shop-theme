@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="store.settings.language" remove="true"/>
+
+        <referenceContainer name="header.panel.wrapper">
+            <block class="Magento\Theme\Block\Html\Header" name="navigations.section" template="html/rwahsnav.phtml" before="header.panel"/>
+        </referenceContainer>
+
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.png</argument>
+                <argument name="logo_img_width" xsi:type="number">272</argument>
+                <argument name="logo_img_height" xsi:type="number">75</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="footer-container">
+            <container name="footer-top" label="Footer Top" htmlTag="div" htmlClass="footer-top page-main">
+                <block class="Magento\Cms\Block\Block" name="block-footertop">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">block-footertop</argument>
+                    </arguments>
+                </block>
+            </container>
+
+            <container name="footer-center" label="Footer Center" htmlTag="div" htmlClass="footer-center page-main" after="footer-top">
+                <block class="Magento\Cms\Block\Block" name="block-footercenter">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">block-footercenter</argument>
+                    </arguments>
+                </block>
+            </container>
+
+            <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer container">
+                <remove name="form.subscribe"/>
+                <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="html/copyright.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="report.bugs" template="Magento_Theme::html/bugreport.phtml" />
+            </container>
+
+        </referenceContainer>
+
+        <referenceBlock name="report.bugs" remove="true"/>
+        <move element="copyright" destination="before.body.end"/>
+    </body>
+</page>
