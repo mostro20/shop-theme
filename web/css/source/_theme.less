@@ -14,6 +14,7 @@
 //
 //  Typography
 //  ---------------------------------------------
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 // Colour overrides
 @color-gray-middle3: #0f245c;
@@ -23,6 +24,14 @@
 @color-blue1: #0f245c;
 @minicart-icons-color: #0f245c;
 @panel__background-color: #0f245c;
+@secondary-nav: #eb6864;
+
+// New colours for managing the cross-site tabs
+@rwahs-header-grey1: #e2dfdf;
+@rwahs-header-grey2: #666666;
+@rwahs-header-grey3: #dddddd;
+@rwahs-header-grey4: #333333;
+@rwahs-header-grey5: #f4f4f4;
 
 //  Color nesting
 @panel__background-color: @color-gray-light0;
@@ -34,32 +43,66 @@
 
 // manual overrides for custom stlying of RWAHS theme
 // ---------------------------------------------
+// Start with bringing in Raleway to match website
+
+p,li,dt,dd,td,th,details,button,form,a,div,details {
+  font-family: Raleway, Georgia, serif;
+}
+
 // background colour for heading panel area
 .page-header{
   background-color: @color-gray-middle3;
 }
-.header .logo{
-  margin-top:-25px;
+//Yume is built around a very small logo, the following three lines support larger logos//
+.page-header .header .logo {
+  margin-top: -25px;
+}
+@media screen and (min-device-width: 481px) and (max-width: 767px) {
+  .page-header .header .logo {
+    margin-left:25%;
+    margin-top:5px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-header .header .logo {
+    margin-left:15%;
+    margin-top:5px;
+  }
 }
 // Account, Login and Shopping Specific Links - currently in YUME are on White BG so need to be overridden:
-.header .links a,
-.header .links a:visited{
-  color:white;
-}
-.header .links a:hover{
-  color:white;
-}
+
+// Whenever I try to refactor the following into a single piece of LESS I crash the theme.
 .header.panel > .header.links > li a {
   color:white;
 }
-
-.minicart-wrapper a.action{
+.header.panel > .header.links > li a:hover {
   color:white;
-}
-.minicart-wrapper .cart-title{
-  color:white
+  border-bottom: 1px dotted solid;
 }
 
+.minicart-wrapper
+  a.action {
+    color:white;
+  .cart-title {
+    color:white
+  }
+}
+
+.page-header {
+  .panel.header {
+    ul.header {
+      float: right;
+      font-size: 0;
+      border-bottom: none;
+      padding-bottom: 10px !important;
+      margin: 0;
+      padding: 0;
+      width: auto;
+      list-style: none none;
+      margin-left: auto;
+    }
+  }
+}
 // customisation of the menu tabs between Shop, Collections and Web.
 // Note due to "Magento Bootstrap" have had to manually style a lot of Bootstrap styles in this area
 
@@ -73,49 +116,131 @@
 
 /*and now the container which as the cross-links*/
 .rwahsglobalnav{
-  background-color: #e2dfdf;
+  background-color: @rwahs-header-grey1;
   padding-top:5px;
+  ul {
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-bottom: 9px;
+    li {
+      display: inline;
+      font-size: 12px;
+      a {
+        color: @rwahs-header-grey2;
+        border-right: 1px solid @rwahs-header-grey3;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        padding: 10px 15px;
+        position: relative;
+        background-color: @rwahs-header-grey1;
+        text-decoration: none;
+        -webkit-border-radius: 6px 6px 0 0;
+        -moz-border-radius: 6px 6px 0 0;
+        border-radius: 6px 6px 0 0;
+        :hover {
+          color: @rwahs-header-grey4;
+          background-color: @rwahs-header-grey5;
+        }
+      }
+      .active {
+        background-color: white;
+        a {
+          border-bottom: 3px solid @color-gray-middle3;
+          background-color: white;
+        }
+      }
+    }
+  }
 }
 
-.rwahsglobalnav ul{
-  margin-top:15px;
-  margin-bottom:0;
-  padding-bottom:9px;
-}
-.rwahsglobalnav ul li{
-  display: inline;
-  font-size:12px;
-}
-.rwahsglobalnav ul li a{
-  color:#666;
-  border-right:1px solid #ddd;
-  margin-right:-1px;
-  margin-bottom:-1px;
-  padding:10px 15px;
-  position: relative;
-  background-color: #e2dfdf;;
-  text-decoration:none;
-  -webkit-border-radius: 6px 6px 0 0;
-  -moz-border-radius: 6px 6px 0 0;
-  border-radius: 6px 6px 0 0;
-}
-.rwahsglobalnav ul li.active a{
-  border-bottom:3px solid #0f245c;
+
+// home page footer panel - believe it or not the bg colour has to be declared on every level
+.page-footer{
   background-color: white;
-}
-.rwahsglobalnav ul li .active{
-  background-color: white;
-}
-.rwahsglobalnav ul li a:hover{
-  color:#333;
-  background-color:#f4f4f4;
+  .footer-top{
+    padding-bottom: 20px;
+    background-color: white;
+    .panel{
+      background-color: white;
+      box-shadow: none;
+      .panel-heading{
+        background-image: none;
+        h3 {
+          border-bottom:1px dotted @color-gray80;
+          font-size:26px;
+        }
+      }
+      .panel-body{
+        a{
+          background-color: @color-gray-middle3;
+          border-color: @color-gray-middle3;
+          color: white;
+          text-decoration: none;
+          display: inline-block;
+          margin-bottom: 0;
+          font-weight: normal;
+          text-align: center;
+          vertical-align: middle;
+          -ms-touch-action: manipulation;
+          touch-action: manipulation;
+          cursor: pointer;
+          background-image: none;
+          border: 1px solid transparent;
+          white-space: nowrap;
+          padding: 8px 12px;
+          font-size: 15px;
+          line-height: 1.42857143;
+          border-radius: 4px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+        }
+      }
+    }
+  }
+  .footer-center{
+    border-top:1px solid @rwahs-header-grey1;
+    .content-container{
+      padding-left: 15%;
+      display: block;
+    }
+    .float-left{
+      float:left;
+    }
+    .float-right{
+      float:right;
+    }
+  }
 }
 
-// home page footer panel
-.footer-top{
-  border-top: 1px solid @color-gray-middle3;
-}
 
+//home page
+h1.site-intro{
+  margin:0;
+  color: @color-gray-middle3;
+}
+.static-content {
+  .static-title {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    font-size: 15px
+  }
+}
+// manual Yume override hacks
+.block-static3 .static-content .static-link{
+  float:none;
+  margin-top:25px;
+  a{
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+.block-static2 .static-content .static-link,
+.block-static4 .static-content .static-link{
+  a{
+    background-color: rgba(0,0,0,0.5);
+  }
+}
 
 //  Widths
 @layout__width: ''; // for the fixed width layout
@@ -156,12 +281,74 @@
 //
 //  Navigation
 //  ---------------------------------------------
-@navigation__background: @color-gray94;
-@navigation-level0-item__active__color: @primary__color;
-@submenu-item__active__color: @navigation-level0-item__active__color;
+@navigation__background: @color-gray-middle3;
+@navigation-level0-item__active__color: white;
+@submenu-item__active__color: white;
+
+@media screen and (min-width: 768px) {
+  .nav-sections {
+    background-color: @color-gray-middle3;
+    .navigation > ul {
+      background-color: @color-gray-middle3;
+      li {
+        font-size: 14pt;
+        :hover {
+          color: white;
+        }
+        a {
+          text-transform: none;
+          display: block;
+          padding: 10px 15px;
+          :hover {
+            background-color: @secondary-nav;
+            color: white;
+          }
+        }
+        .has-active {
+          background-color: @secondary-nav;
+          a {
+            background-color: @secondary-nav;
+            border-bottom: none;
+          }
+        }
+        li {
+          font-size: 12pt;
+        }
+      }
+      .level0.active > a {
+        background-color: @secondary-nav;
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .nav-sections {
+    background-color: white;
+    .nav-sections-item-title{
+      background-color: white;
+      border:none;
+      border-bottom:3px solid @color-gray-middle3;
+    }
+  }
+}
+
+//Product overrides
+.product-block{
+  .product-item-details{
+    .product-item-name{
+      font-size: 14pt;
+      a{
+        border-bottom:1px dotted @color-gray-middle3;
+        :hover{
+          border-bottom:1px solid @color-gray-middle3;
+        }
+      }
+    }
+  }
+}
 
 //  Desktop navigation
-@navigation-desktop-level0-item__line-height: 47px;
+@navigation-desktop-level0-item__line-height: 40px;
 @submenu-desktop__font-weight: @font-weight__regular;
 @submenu-desktop-item__active__color: @color-gray-middle3;
 

@@ -1,0 +1,45 @@
+// *****************************************************
+//  * @package Venus Theme Framework for Magento 2.x
+//  * @version 1.0
+//  * @author http://www.venustheme.com
+//  * @copyright Copyright (C) Augus 2015 VenusThemes.com <@email:venusthemes@gmail.com>.All rights reserved.
+//  * @license   GNU General Public License version 1
+// ******************************************************
+.nav-sections {
+	background: transparent;
+	margin-bottom: 15px!important;
+}
+.navigation {
+	background: transparent !important;
+	padding: 0 @grid-gutter-width/2 !important;
+	> ul {
+		background: #000;
+	}
+
+	.level0 {
+		> .level-top {
+			padding: 0 @grid-gutter-width/2 !important;
+		}
+		
+		> a {
+			text-transform: uppercase;
+			color: #fff !important;
+			font-weight: 500 !important;
+			padding:0 25px;
+			&:hover, &:focus {
+				color: #eb6864 !important;
+			}
+		}
+
+		&.active {
+			border:0 !important;
+			> a {
+				background: #eb6864 !important;
+				border:0 !important;
+				&:hover, &:focus {
+					color: #fff !important;
+				}
+			}
+		}
+	}
+}
