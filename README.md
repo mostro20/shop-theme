@@ -7,17 +7,17 @@ The following guide uses the following directory layout:
 ```
 + /
 |
-+-+ srv
++-+ srv/
   |
-  +-+ deploy
+  +-+ deploy/
   | |
-  | +-- shop-theme (this repo is cloned here)
+  | +-- shop-theme/ (this repo is cloned here)
   | |
-  | +-- shop-migration (the shop-migration repo is cloned here)
+  | +-- shop-migration/ (the shop-migration repo is cloned here)
   |
   +-+ sites
     |
-    +-- <environment>-shop.histwest.org.au (magento install path)
+    +-- <environment>-shop.histwest.org.au/ (magento install path)
 ```
 
 Where `<environment>` is the name of the environment being installed, e.g. `staging` or `production`.  In the commands 
