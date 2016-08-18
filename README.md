@@ -24,6 +24,8 @@ Where `<environment>` is the name of the environment being installed, e.g. `stag
 
 The directories indicated above are used in commands below; if you want a different file system layout, you must alter the commands accordingly.
 
+The database host is assumed to be `<environment>-shop-db.histwest.org.au`, the database name is `shop`, the database user is `magento2` and the password is `password`.  Alter these values as appropriate.
+
 ## Reference
 
 These instructions follow the basic principles outlined in the Magento 2.0 documentation:
@@ -50,7 +52,7 @@ git clone https://github.com/rwahs/shop-theme.git
 git clone https://github.com/rwahs/shop-migration.git
 ```
 
-### 2. Install Magento
+### 2. Install Magento code
 
 * Version: 2.0.x
 * Method: composer
@@ -63,16 +65,43 @@ composer create-project --repository-url=https://repo.magento.com/ magento/proje
 
 Note that if the version is omitted, the latest stable release is installed, which may yield unexpected results.  The database seed and theme files were created for and tested against 2.0.x only.
 
-### 3. Install the Database Seed
+### 3. Run the Magento installer
 
+This step is required to configure the database connection and backend URL; other settings will be overwritten by installing the database seed in the next step.
 
-### 4. Copy the Theme
+```
+cd /srv/sites/documentation-shop.histwest.org.au
+bin/magento setup:install --db-host=documentation-shop-db.histwest.org.au --db-name=shop --db-user=magento2 --db-password=password --backend-frontname=rwahs_admin --admin-user=administrator --admin-password=password1 --admin-email=rwahs@gaiaresources.com.au --admin-firstname=System --admin-lastname=Administrator 
+```
 
+### 4. Copy the theme
 
-### 5. Make the Theme Available to Magento
+There is an issue with building the theme using a symlink, so we must copy the files under `app/design/frontend`.
 
+```
+cd /srv/sites/documentation-shop.histwest.org.au/
+mkdir -p app/design/frontend/Gaia
+cp -R /srv/deploy/shop-theme app/design/frontend/Gaia/rwahsluma
+```
 
-### 6. Set Magento to Production Mode
+### 5. Install the database seed
 
+The database seed contains most of the custom configuration, theme selection, administrator details, etc.
 
+```
+/srv/deploy/shop-migration/bin/reset-db
+```
 
+### 6. Set Magento to `production` mode
+
+The explicit call to `setup:static-content:deploy` is required due to requiring multiple locales.  `en_AU` is used in
+the frontend, and `en_US` is used for the backend admin UI.  The final command sets Magento to production mode, 
+including compiling the dependency injections and other configuration.
+
+```
+cd /srv/sites/documentation-shop.histwest.org.au/
+bin/magento setup:static-content:deploy en_AU en_US
+bin/magento deploy:mode:set production
+```
+
+Now, the RWAHS shop is running!
