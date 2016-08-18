@@ -20,11 +20,14 @@ The following guide uses the following directory layout:
     +-- <environment>-shop.histwest.org.au (magento install path)
 ```
 
-Where `<environment>` is the name of the environment being installed, e.g. `staging` or `production`.  In the commands below, the `<environment>` used is `documentation`.
+Where `<environment>` is the name of the environment being installed, e.g. `staging` or `production`.  In the commands 
+below, the `<environment>` used is `documentation`.
 
-The directories indicated above are used in commands below; if you want a different file system layout, you must alter the commands accordingly.
+The directories indicated above are used in commands below; if you want a different file system layout, you must alter 
+the commands accordingly.
 
-The database host is assumed to be `<environment>-shop-db.histwest.org.au`, the database name is `shop`, the database user is `magento2` and the password is `password`.  Alter these values as appropriate.
+The database host is assumed to be `<environment>-shop-db.histwest.org.au`, the database name is `shop`, the database 
+user is `magento2` and the password is `password`.  Alter these values as appropriate.
 
 ## Reference
 
@@ -32,14 +35,17 @@ These instructions follow the basic principles outlined in the Magento 2.0 docum
 
 * http://devdocs.magento.com/guides/v2.0/install-gde/bk-install-guide.html
 
-Note that no consideration is given in the instructions below to file system ownership and permission, however it is assumed that the Magento guidelines are adhered to:
+Note that no consideration is given in the instructions below to file system ownership and permission, however it is 
+assumed that the Magento guidelines are adhered to:
 
 * http://devdocs.magento.com/guides/v2.0/install-gde/prereq/integrator_install.html#mage-owner-about-group
 
 Finally, server software is required:
 
-* A web server; `nginx` is recommended, in combination with `php-fpm`.  Setup of the web server or CGI backend is outside of the scope of this document.
-* A database server; `mysql` or a variant is required by Magento.  These instructions assume a database has been created and permissions assigned, as per standard procedure.
+* A web server; `nginx` is recommended, in combination with `php-fpm`.  Setup of the web server or CGI backend is 
+outside of the scope of this document.
+* A database server; `mysql` or a variant is required by Magento.  These instructions assume a database has been 
+created and permissions assigned, as per standard procedure.
 
 ## Steps
 
@@ -63,11 +69,13 @@ Example to install `2.0.8`:
 composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition /srv/sites/documentation-shop.histwest.org.au 2.0.8
 ```
 
-Note that if the version is omitted, the latest stable release is installed, which may yield unexpected results.  The database seed and theme files were created for and tested against 2.0.x only.
+Note that if the version is omitted, the latest stable release is installed, which may yield unexpected results.  The 
+database seed and theme files were created for and tested against 2.0.x only.
 
 ### 3. Run the Magento installer
 
-This step is required to configure the database connection and backend URL; other settings will be overwritten by installing the database seed in the next step.
+This step is required to configure the database connection and backend URL; other settings will be overwritten by 
+installing the database seed in the next step.
 
 ```
 cd /srv/sites/documentation-shop.histwest.org.au
@@ -109,6 +117,7 @@ bin/magento deploy:mode:set production
 1. Log in to the admin user interface at https://documentation-shop.histwest.org.au/rwahs_admin.
 2. Go to: Stores - Configuration - Advanced - System - Storage Configuration for Media
 3. Change `Media Storage` to `File System`, then click `Synchronize` and then `Save Config` (top right)
-4. Flush the cache, either by going to System - Cache Management and clicking `Flush Magento Cache`, or by executing `bin/magento cache:flush`.
+4. Flush the cache, either by going to System - Cache Management and clicking `Flush Magento Cache`, or by executing 
+   `bin/magento cache:flush`.
 
 The RWAHS shop is now fully operational.
