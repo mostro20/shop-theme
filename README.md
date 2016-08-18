@@ -104,4 +104,11 @@ bin/magento setup:static-content:deploy en_AU en_US
 bin/magento deploy:mode:set production
 ```
 
-Now, the RWAHS shop is running!
+### 7. Move media from the database to the file system
+
+1. Log in to the admin user interface at https://documentation-shop.histwest.org.au/rwahs_admin.
+2. Go to: Stores - Configuration - Advanced - System - Storage Configuration for Media
+3. Change `Media Storage` to `File System`, then click `Synchronize` and then `Save Config` (top right)
+4. Flush the cache, either by going to System - Cache Management and clicking `Flush Magento Cache`, or by executing `bin/magento cache:flush`.
+
+The RWAHS shop is now fully operational.
