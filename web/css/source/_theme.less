@@ -53,20 +53,15 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
 .page-header{
   background-color: @color-gray-middle3;
 }
-//Yume is built around a very small logo, the following three lines support larger logos//
-.page-header .header .logo {
-  margin-top: -25px;
-}
+
 @media screen and (min-device-width: 481px) and (max-width: 767px) {
-  .page-header .header .logo {
-    margin-left:25%;
-    margin-top:5px;
+  .page-header .header .logo img{
+    max-height: 60px;
   }
 }
 @media screen and (max-width: 480px) {
-  .page-header .header .logo {
-    margin-left:15%;
-    margin-top:5px;
+  .page-header .header .logo img{
+    max-height: 50px;
   }
 }
 // Account, Login and Shopping Specific Links - currently in YUME are on White BG so need to be overridden:
@@ -90,6 +85,7 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
 
 .page-header {
   .panel.header {
+    height:20px;
     ul.header {
       float: right;
       font-size: 0;
@@ -102,7 +98,43 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
       margin-left: auto;
     }
   }
+  .panel.wrapper{
+    border-bottom: none;
+  }
 }
+// Luma minor hacks
+.copyright{
+  background-color: @color-blue1;
+}
+
+.breadcrumbs{
+  ul{
+    color:@color-blue1;
+    li{
+      color: @color-blue1;
+      a{
+        color: @color-blue1;
+        :visited{
+          color: @color-blue1;
+        }
+      }
+    }
+  }
+  a:visited{
+    color: @color-blue1;
+  }
+}
+
+.clearfix{
+  overflow: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .product.data.items > .item.content {
+    background: white;
+  }
+}
+
 // customisation of the menu tabs between Shop, Collections and Web.
 // Note due to "Magento Bootstrap" have had to manually style a lot of Bootstrap styles in this area
 
@@ -144,7 +176,6 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
     }
   }
 }
-
 
 // home page footer panel - believe it or not the bg colour has to be declared on every level
 .page-footer{
@@ -195,6 +226,7 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
     .content-container{
       padding-left: 15%;
       display: block;
+      celear:both;
     }
     .float-left{
       float:left;
@@ -233,6 +265,15 @@ h1.site-intro{
     background-color: rgba(0,0,0,0.5);
   }
 }
+@media screen and (min-width: 768px) {
+  .row {
+    .panel {
+      float:left;
+      width:33.3%;
+    }
+  }
+}
+
 
 //  Widths
 @layout__width: ''; // for the fixed width layout
@@ -311,8 +352,13 @@ h1.site-intro{
         background-color: @secondary-nav;
       }
     }
+    nav.navigation ul li a{
+      color: white;
+    }
   }
 }
+
+
 @media screen and (max-width: 767px) {
   .nav-sections {
     background-color: white;
@@ -322,6 +368,20 @@ h1.site-intro{
       border-bottom:3px solid @color-gray-middle3;
     }
   }
+}
+
+// hackity hack hack - Maganto style! - overriding Luma one ID at a time as I couldn't get to work any other way
+a#ui-id-1.level-top.ui-corner-all,
+a#ui-id-2.level-top.ui-corner-all,
+a#ui-id-3.level-top.ui-corner-all,
+a#ui-id-4.level-top.ui-corner-all,
+a#ui-id-5.level-top.ui-corner-all,
+a#ui-id-6.level-top.ui-corner-all,
+a#ui-id-7.level-top.ui-corner-all,
+a#ui-id-8.level-top.ui-corner-all
+a#ui-id-9.level-top.ui-corner-all,
+a#ui-id-10.level-top.ui-corner-all{
+  color: white;
 }
 
 //Product overrides
