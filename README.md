@@ -40,7 +40,7 @@ These instructions follow the basic principles outlined in the Magento 2.0 docum
 Please see the following link for the Magento system requirements.  Installation of system requirements is outside the
 scope of this document.  Composer is required.
 
-http://devdocs.magento.com/guides/v2.0/install-gde/system-requirements.html
+* http://devdocs.magento.com/guides/v2.0/install-gde/system-requirements.html
 
 ## Steps
 
