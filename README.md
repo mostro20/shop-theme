@@ -72,6 +72,10 @@ composer create-project --repository-url=https://repo.magento.com/ magento/proje
 Note that if the version is omitted, the latest stable release is installed, which may yield unexpected results.  The 
 database seed and theme files were created for and tested against 2.0.x only.
 
+To run the `composer` installation, you will also need an access key as described here:
+ 
+* http://devdocs.magento.com/guides/v2.0/install-gde/prereq/connect-auth.html
+
 ### 3. Run the Magento installer
 
 This step is required to configure the database connection and backend URL; other settings will be overwritten by 
