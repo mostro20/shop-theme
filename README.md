@@ -130,7 +130,8 @@ bin/magento deploy:mode:set production
 
 ### 8. Install procurement management plugin
 
-See also: http://documentation.boostmyshop.com/inventory_management_magento2/2_installation.html
+See also: http://documentation.boostmyshop.com/inventory_management_magento2/2_installation.html however note that this
+refers to a different plugin with additional steps (database upgrade) that are not required here.
 
 1. Copy the `code` directory of the unpacked `bms-magento2-supplier-0.0.8.zip` archive into the magento2 `app` 
    directory: `cp /path/to/bms-magento2-supplier-0.0.8/app/code app/`
