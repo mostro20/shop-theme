@@ -84,7 +84,7 @@ These are the commands to run (taken from the above link):
 cd /srv/sites/documentation-shop.histwest.org.au
 find var vendor pub/static pub/media app/etc -type f -exec chmod g+w {} \;
 find var vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} \;
-chown -R :<web server group> .
+chown -R :www-data .
 chmod u+x bin/magento
 ```
 
@@ -128,7 +128,21 @@ bin/magento setup:static-content:deploy en_AU en_US
 bin/magento deploy:mode:set production
 ```
 
-### 8. Move media from the database to the file system
+### 8. Install procurement management plugin
+
+1. Copy the `code` directory of the unpacked `bms-magento2-supplier-0.0.8.zip` archive into the magento2 `app` 
+   directory: `cp /path/to/bms-magento2-supplier-0.0.8/app/code app/`
+2. Fix permissions: `chown -R magento2:www-data app/code`
+3. Enable the plugin:
+
+```
+bin/magento setup:upgrade
+rm -rf var/generation var/di
+bin/magento module:enable BoostMyShop_Supplier
+php bin/magento setup:di:compile
+```
+
+### 9. Move media from the database to the file system
 
 1. Log in to the admin user interface at https://documentation-shop.histwest.org.au/rwahs_admin.
 2. Go to: Stores - Configuration - Advanced - System - Storage Configuration for Media
@@ -137,3 +151,4 @@ bin/magento deploy:mode:set production
    `bin/magento cache:flush`.
 
 The RWAHS shop is now fully operational.
+
