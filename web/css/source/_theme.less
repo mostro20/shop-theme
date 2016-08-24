@@ -138,32 +138,37 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
 /*and now the container which as the cross-links*/
 .rwahsglobalnav{
   background-color: @rwahs-header-grey1;
-  padding-top:5px;
+  padding-top: 13px;
+  #cross-site {
+    padding: 0;
+    height: auto;
+    .subsites-entry {
+      padding: 0 15px;
+    }
+  }
   ul {
-    margin-top: 15px;
-    margin-bottom: 0;
-    padding-bottom: 9px;
+    padding: 1px 0 11px 0;
+    margin: 0;
     li {
       display: inline;
       font-size: 12px;
       a {
         color: @rwahs-header-grey2;
-        border-right: 1px solid @rwahs-header-grey3;
-        margin-right: -1px;
-        margin-bottom: -1px;
-        padding: 10px 15px;
-        position: relative;
         background-color: @rwahs-header-grey1;
+        border-bottom: 3px solid @rwahs-header-grey1;
+        padding: 10px;
+        position: relative;
         text-decoration: none;
-        -webkit-border-radius: 6px 6px 0 0;
-        -moz-border-radius: 6px 6px 0 0;
-        border-radius: 6px 6px 0 0;
-        :hover {
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        &:hover {
           color: @rwahs-header-grey4;
-          background-color: @rwahs-header-grey5;
+          background-color: white;
+          border-bottom-color: @color-blue1;
         }
       }
-      .active {
+      &.active {
         background-color: @color-blue1;
         color: white;
         a {
@@ -648,4 +653,3 @@ h1.site-intro{
 
 // Checkout
 @checkout-sidebar__columns: 8;
-
