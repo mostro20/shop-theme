@@ -53,31 +53,23 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
 .page-header{
   background-color: @color-gray-middle3;
 }
-//Yume is built around a very small logo, the following three lines support larger logos//
-.page-header .header .logo {
-  margin-top: -25px;
-}
+
 @media screen and (min-device-width: 481px) and (max-width: 767px) {
-  .page-header .header .logo {
-    margin-left:25%;
-    margin-top:5px;
+  .page-header .header .logo img{
+    max-height: 60px;
   }
 }
 @media screen and (max-width: 480px) {
-  .page-header .header .logo {
-    margin-left:15%;
-    margin-top:5px;
+  .page-header .header .logo img{
+    max-height: 50px;
   }
 }
 // Account, Login and Shopping Specific Links - currently in YUME are on White BG so need to be overridden:
-
-// Whenever I try to refactor the following into a single piece of LESS I crash the theme.
-.header.panel > .header.links > li a {
-  color:white;
+.header.panel > .header.links > li.welcome{
+  display:none;
 }
-.header.panel > .header.links > li a:hover {
-  color:white;
-  border-bottom: 1px dotted solid;
+.header.panel > .header.links > li.customer-welcome.active ul.header.links li a{
+ color: black;
 }
 
 .minicart-wrapper
@@ -90,69 +82,108 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
 
 .page-header {
   .panel.header {
+    height:20px;
     ul.header {
       float: right;
       font-size: 0;
       border-bottom: none;
-      padding-bottom: 10px !important;
-      margin: 0;
-      padding: 0;
+      padding: 0 0 10px 0;
+      margin: 0 0 0 auto;
       width: auto;
       list-style: none none;
-      margin-left: auto;
+    }
+  }
+  .panel.wrapper{
+    border-bottom: none;
+  }
+  .header.content {
+    padding-top: 0;
+    .minicart-wrapper {
+      clear: right;
     }
   }
 }
-// customisation of the menu tabs between Shop, Collections and Web.
-// Note due to "Magento Bootstrap" have had to manually style a lot of Bootstrap styles in this area
+// Luma minor hacks
+.copyright{
+  background-color: @color-blue1;
+}
 
-// Hide from mobile display
-@media screen and (max-width: 768px){
-  .rwahsglobalnav {
-    display: none;
+.breadcrumbs{
+  ul{
+    color:@color-blue1;
+    li{
+      color: @color-blue1;
+      a{
+        color: @color-blue1;
+        :visited{
+          color: @color-blue1;
+        }
+      }
+    }
+  }
+  a:visited{
+    color: @color-blue1;
   }
 }
-// Now style of other displays
+
+.clearfix{
+  overflow: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .product.data.items > .item.content {
+    background: white;
+  }
+}
+
+// customisation of the menu tabs between Shop, Collections and Web.
+// Note due to "Magento Bootstrap" have had to manually style a lot of Bootstrap styles in this area
 
 /*and now the container which as the cross-links*/
 .rwahsglobalnav{
   background-color: @rwahs-header-grey1;
-  padding-top:5px;
+  padding-top: 13px;
+  #cross-site {
+    padding: 0;
+    height: auto;
+    .subsites-entry {
+      padding: 0 20px;
+    }
+  }
   ul {
-    margin-top: 15px;
-    margin-bottom: 0;
-    padding-bottom: 9px;
+    padding: 1px 0 11px 0;
+    margin: 0;
     li {
       display: inline;
       font-size: 12px;
       a {
         color: @rwahs-header-grey2;
-        border-right: 1px solid @rwahs-header-grey3;
-        margin-right: -1px;
-        margin-bottom: -1px;
-        padding: 10px 15px;
-        position: relative;
         background-color: @rwahs-header-grey1;
+        border-bottom: 3px solid @rwahs-header-grey1;
+        padding: 10px;
+        position: relative;
         text-decoration: none;
-        -webkit-border-radius: 6px 6px 0 0;
-        -moz-border-radius: 6px 6px 0 0;
-        border-radius: 6px 6px 0 0;
-        :hover {
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        &:hover {
           color: @rwahs-header-grey4;
-          background-color: @rwahs-header-grey5;
+          background-color: white;
+          border-bottom-color: @color-blue1;
         }
       }
-      .active {
-        background-color: white;
+      &.active {
+        background-color: @color-blue1;
+        color: white;
         a {
-          border-bottom: 3px solid @color-gray-middle3;
-          background-color: white;
+          border-bottom: 3px solid @color-blue1;
+          background-color: @color-blue1;
+          color: white;
         }
       }
     }
   }
 }
-
 
 // home page footer panel - believe it or not the bg colour has to be declared on every level
 .page-footer{
@@ -241,6 +272,27 @@ h1.site-intro{
     background-color: rgba(0,0,0,0.5);
   }
 }
+@media screen and (min-width: 768px) {
+  .row {
+    .panel {
+      float: left;
+      width: 30%;
+      margin-right: 5%;
+    }
+    .panel-last{
+      margin-right: 0;
+    }
+    .panel-25{
+      float: left;
+      width: 25%;
+    }
+    .panel-50{
+      float: left;
+      width: 50%;
+    }
+  }
+}
+
 
 //  Widths
 @layout__width: ''; // for the fixed width layout
@@ -299,6 +351,7 @@ h1.site-intro{
           text-transform: none;
           display: block;
           padding: 10px 15px;
+          color: white;
           :hover {
             background-color: @secondary-nav;
             color: white;
@@ -306,6 +359,7 @@ h1.site-intro{
         }
         .has-active {
           background-color: @secondary-nav;
+          color: white;
           a {
             background-color: @secondary-nav;
             border-bottom: none;
@@ -319,8 +373,19 @@ h1.site-intro{
         background-color: @secondary-nav;
       }
     }
+    .navigation .level0 > .level-top{
+      color: white;
+    }
+    .navigation .level0 > .level-top:hover{
+      background-color: @secondary-nav;
+    }
+    .navigation .level0 .submenu a:hover{
+      background-color: @secondary-nav;
+    }
   }
 }
+
+
 @media screen and (max-width: 767px) {
   .nav-sections {
     background-color: white;
@@ -329,8 +394,22 @@ h1.site-intro{
       border:none;
       border-bottom:3px solid @color-gray-middle3;
     }
+    .navigation a{
+      color: white;
+    }
   }
 }
+
+//Checkout page tweaks
+@media screen and (min-width: 768px){
+  .opc-wrapper{
+    width: 66%;
+  }
+  .opc-sidebar{
+    width: 33%;
+  }
+}
+
 
 //Product overrides
 .product-block{
@@ -578,4 +657,3 @@ h1.site-intro{
 
 // Checkout
 @checkout-sidebar__columns: 8;
-

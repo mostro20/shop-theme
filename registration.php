@@ -6,6 +6,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::THEME,
-    'frontend/Gaia/rwahs',
+    'frontend/Gaia/rwahsluma',
     __DIR__
 );
