@@ -65,14 +65,11 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
   }
 }
 // Account, Login and Shopping Specific Links - currently in YUME are on White BG so need to be overridden:
-
-// Whenever I try to refactor the following into a single piece of LESS I crash the theme.
-.header.panel > .header.links > li a {
-  color:white;
+.header.panel > .header.links > li.welcome{
+  display:none;
 }
-.header.panel > .header.links > li a:hover {
-  color:white;
-  border-bottom: 1px dotted solid;
+.header.panel > .header.links > li.customer-welcome.active ul.header.links li a{
+ color: black;
 }
 
 .minicart-wrapper
@@ -167,10 +164,12 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
         }
       }
       .active {
-        background-color: white;
+        background-color: @color-blue1;
+        color: white;
         a {
-          border-bottom: 3px solid @color-gray-middle3;
-          background-color: white;
+          border-bottom: 3px solid @color-blue1;
+          background-color: @color-blue1;
+          color: white;
         }
       }
     }
@@ -331,6 +330,7 @@ h1.site-intro{
           text-transform: none;
           display: block;
           padding: 10px 15px;
+          color: white;
           :hover {
             background-color: @secondary-nav;
             color: white;
@@ -338,6 +338,7 @@ h1.site-intro{
         }
         .has-active {
           background-color: @secondary-nav;
+          color: white;
           a {
             background-color: @secondary-nav;
             border-bottom: none;
@@ -351,8 +352,14 @@ h1.site-intro{
         background-color: @secondary-nav;
       }
     }
-    nav.navigation ul li a{
+    .navigation .level0 > .level-top{
       color: white;
+    }
+    .navigation .level0 > .level-top:hover{
+      background-color: @secondary-nav;
+    }
+    .navigation .level0 .submenu a:hover{
+      background-color: @secondary-nav;
     }
   }
 }
@@ -366,8 +373,20 @@ h1.site-intro{
       border:none;
       border-bottom:3px solid @color-gray-middle3;
     }
+    .navigation a{
+      color: white;
+    }
   }
 }
+
+//Checkout page tweaks
+@media screen and (min-width: 768px){
+  .opc-wrapper,
+  .opc-sidebar{
+    width: 100%;
+  }
+}
+
 
 //Product overrides
 .product-block{
