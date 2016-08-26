@@ -64,12 +64,22 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
     max-height: 50px;
   }
 }
-// Account, Login and Shopping Specific Links - currently in YUME are on White BG so need to be overridden:
+
 .header.panel > .header.links > li.welcome{
   display:none;
 }
-.header.panel > .header.links > li.customer-welcome.active ul.header.links li a{
- color: black;
+
+// Now the my accounts pulldown
+.header.panel > .header.links > li.customer-welcome > .customer-menu.cust-pulldown > ul.header.links{
+ background-color: @rwahs-header-grey1;
+  li{
+    border-bottom: 1px solid @rwahs-header-grey3;
+    a{
+      color: black;
+      font-size: 12pt;
+      &:hover{border-bottom:1px dashed black;}
+    }
+  }
 }
 
 .minicart-wrapper
