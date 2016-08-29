@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<div class="order-details-items invoice">
+    <h2>TAX INVOICE</h2>
+    <p>
+        ABN: 43 607 110 473<br />
+        DGR Fund Number: 208417<br />
+        Phone:+61 89 386 3841<br />
+        Address: 49 Broadway, Nedlands, WA, 6009
+    </p>
+
+    <?php echo $block->getChildHtml('invoice_items') ?>
+    <div class="actions-toolbar">
+        <div class="secondary">
+            <a href="<?php /* @escapeNotVerified */ echo $block->getBackUrl() ?>" class="action back">
+                <span><?php /* @escapeNotVerified */ echo $block->getBackTitle() ?></span>
+            </a>
+        </div>
+    </div>
+    <p>Any donation over $2.00 made to ROYAL WESTERN AUSTRALIAN HISTORICAL SOCIETY INC MUSEUM AND LIBRARY FUND (ABN: 43 607 110 473 | DGR Fund Number: 20841) is tax deductible.</p>
+</div>
