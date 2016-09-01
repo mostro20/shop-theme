@@ -42,6 +42,17 @@ scope of this document.  Composer is required.
 
 * http://devdocs.magento.com/guides/v2.0/install-gde/system-requirements.html
 
+## Admin UI Locale Configuration
+
+* Magento2 serves static content (stylesheets and javascript) on a per-locale basis.
+* The database seed sets the default locale to `en_AU`.  This means that by default (and as per the instructions below)
+  the static content is only built for the `en_AU` locale; if any other locale is used, the page will be broken.
+* When an admin user is logged in, their profile determines the locale used.  All users should always use `en_AU`.
+* The locale can also be set by appending a URL parameter: `?locale=en_AU`; this is saved as a cookie and used for 
+  future requests.
+* The login screen does not use the default locale, it always uses `en_US` by default.  Therefore the distributed login
+  URL should always have the `?locale=en_AU` appended.
+
 ## Steps
 
 ### 1. Clone repositories
