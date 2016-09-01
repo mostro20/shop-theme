@@ -1,4 +1,4 @@
-# shop-theme
+# RWAHS Magento2 Shop Theme
 
 Magento2 theme for RWAHS shop, based on the pre-packaged Luma theme.
 
@@ -53,6 +53,8 @@ git clone https://github.com/rwahs/shop-theme.git
 git clone https://github.com/rwahs/shop-migration.git
 ```
 
+You will also need to setup a `local-settings` file in the `shop-migration` clone, as described by its README file.
+
 ### 2. Install Magento code
 
 * Version: 2.0.x
@@ -61,13 +63,17 @@ git clone https://github.com/rwahs/shop-migration.git
 Example to install `2.0.8`:
 
 ```
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition /srv/sites/documentation-shop.histwest.org.au 2.0.8
+cd /srv/sites/documentation-shop.histwest.org.au
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition . 2.0.8
 ```
 
-Note that if the version is omitted, the latest stable release is installed, which may yield unexpected results.  The 
+**Note** The remainder of the following instructions assume that you are following them in order, and have therefore 
+already changed directory to the Magento installation root as per the first command above.
+
+**Note** If the version is omitted, the latest stable release is installed, which may yield unexpected results.  The 
 database seed and theme files were created for and tested against 2.0.x only.
 
-To run the `composer` installation, you will also need an access key as described here:
+**Note** To run the `composer` installation, you will also need an access key as described here:
  
 * http://devdocs.magento.com/guides/v2.0/install-gde/prereq/connect-auth.html
 
@@ -81,15 +87,11 @@ separate from the web server user:
 These are the commands to run (taken from the above link):
 
 ```
-cd /srv/sites/documentation-shop.histwest.org.au
 find var vendor pub/static pub/media app/etc -type f -exec chmod g+w {} \;
 find var vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} \;
 chown -R :www-data .
 chmod u+x bin/magento
 ```
-
-**Note** The remainder of the following instructions assume that you are following them in order, and have therefore 
-already changed directory to the Magento installation root as per the first command above.
 
 ### 4. Run the Magento installer
 
@@ -119,39 +121,33 @@ The database seed contains most of the custom configuration, theme selection, ad
 
 ### 7. Set Magento to `production` mode
 
-The explicit call to `setup:static-content:deploy` is required due to requiring multiple locales.  `en_AU` is used in
-the frontend, and `en_US` is used for the backend admin UI.  The final command sets Magento to production mode, 
-including compiling the dependency injections and other configuration.
+In any deployed environment, Magento should be in `production` mode, as opposed to `default` or `developer`.  
 
 ```
-bin/magento setup:static-content:deploy en_AU en_US
 bin/magento deploy:mode:set production
 ```
 
 ### 8. Install procurement management plugin
 
 See also: http://documentation.boostmyshop.com/inventory_management_magento2/2_installation.html however note that this
-refers to a different plugin with additional steps (database upgrade) that are not required here.
-
-1. Copy the `code` directory of the unpacked `bms-magento2-supplier-0.0.8.zip` archive into the magento2 `app` 
-   directory: `cp /path/to/bms-magento2-supplier-0.0.8/app/code app/`
-2. Fix permissions: `chown -R magento2:www-data app/code`
-3. Enable the plugin:
+refers to a different plugin with additional steps (database upgrade) that are not required here.  The plugin zip file 
+should be unpacked to a known location, e.g. `/path/to/bms-magento2-supplier-0.0.8`.
 
 ```
+cp -R /path/to/bms-magento2-supplier-0.0.8/app/code app/
+chown -R magento2:www-data app/code
 bin/magento setup:upgrade
 rm -rf var/generation var/di
 bin/magento module:enable BoostMyShop_Supplier
-php bin/magento setup:di:compile
+bin/magento setup:di:compile
 ```
 
 ### 9. Move media from the database to the file system
 
-1. Log in to the admin user interface at https://documentation-shop.histwest.org.au/rwahs_admin.
-2. Go to: Stores - Configuration - Advanced - System - Storage Configuration for Media
-3. Change `Media Storage` to `File System`, then click `Synchronize` and then `Save Config` (top right)
+1. Log in to the admin user interface at: https://documentation-shop.histwest.org.au/rwahs_admin?locale=en_AU
+2. Go to: Stores - Configuration - Advanced - System - Storage Configuration for Media.
+3. Change `Media Storage` to `File System`, then click `Synchronize` and then `Save Config` (top right).
 4. Flush the cache, either by going to System - Cache Management and clicking `Flush Magento Cache`, or by executing 
    `bin/magento cache:flush`.
 
 The RWAHS shop is now fully operational.
-
