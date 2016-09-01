@@ -48,7 +48,7 @@ Magento2 ships with an `nginx.conf.sample` file, which is mostly correct.  Howev
 `$MAGE_ROOT/pub`, which triggers an error when importing images (tested on `2.0.8`).  See bug report at 
 https://github.com/magento/magento2/issues/6449.
 
-The solution is to set the web server root to `$MAGE_ROOT` instead of `$MAGE_ROOT/pub`.
+The workaround is to set the web server root to `$MAGE_ROOT` instead of `$MAGE_ROOT/pub`.
 
 ## Steps
 
