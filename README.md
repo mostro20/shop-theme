@@ -42,6 +42,14 @@ scope of this document.  Composer is required.
 
 * http://devdocs.magento.com/guides/v2.0/install-gde/system-requirements.html
 
+## Note about the Nginx sample configuration
+
+Magento2 ships with an `nginx.conf.sample` file, which is mostly correct.  However, it sets the `root` to 
+`$MAGE_ROOT/pub`, which triggers an error when importing images (tested on `2.0.8`).  See bug report at 
+https://github.com/magento/magento2/issues/6449.
+
+The workaround is to set the web server root to `$MAGE_ROOT` instead of `$MAGE_ROOT/pub`.
+
 ## Admin UI Locale Configuration
 
 * Magento2 serves static content (stylesheets and javascript) on a per-locale basis.
