@@ -94,8 +94,33 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
 .minicart-wrapper
   a.action {
     color:white;
+    &.viewcart{
+      color: @color-blue1;
+    }
   .cart-title {
     color:white
+  }
+}
+
+//mini cart overrides
+.minicart-items .action.edit:before,
+.minicart-items .action.delete:before{
+  color: @color-blue1;
+}
+//cart page width adjustment
+@media screen and (min-width: 768px) and (max-width: 960px) {
+  .cart-summary {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 961px) and (max-width: 1100px) {
+  .cart-summary {
+    width: 40%;
+  }
+}
+@media screen and (min-width: 1101px) {
+  .cart-summary {
+    width: 50%;
   }
 }
 
@@ -119,6 +144,12 @@ p,li,dt,dd,td,th,details,button,form,a,div,details {
     padding-top: 0;
     .minicart-wrapper {
       clear: right;
+    }
+    ul.compare.wrapper li a{
+      color: white;
+      .counter.qty{
+        color: white;
+      }
     }
   }
 }
